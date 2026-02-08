@@ -1,0 +1,184 @@
+class SubjectManager:
+    def __init__(self):
+        self.subjects = {}
+
+    def create_subject(self):
+        code = input("Enter subject code: ").upper()
+        if code in self.subjects:
+            print("Subject already exists!")
+        else:
+            name = input("Enter subject name: ")
+            schedule = input("Enter time schedule (e.g. MWF 8:00-9:00): ")
+            units = int(input("Enter number of units: "))
+            year = input("Enter year level (First/Second/Third/Higher): ").title()
+            gender = input("Enter gender  (Male/Female/): ").title()
+
+            self.subjects[code] = {
+                "name": name,
+                "schedule": schedule,
+                "units": units,
+                "year": year,
+                "gender": gender
+            }
+            print("Subject added successfully!")
+
+    def read_subjects(self):
+        if not self.subjects:
+            print("No subjects available.")
+        else:
+            print("\n--- SUBJECT LIST ---")
+            for code, info in self.subjects.items():
+                print(f"Code: {code}")
+                print(f" Name: {info['name']}")
+                print(f" Schedule: {info['schedule']}")
+                print(f" Units: {info['units']}")
+                print(f" Year Level: {info['year']}")
+                print(f" Gender: {info['gender']}\n")
+
+    def update_subject(self):
+        code = input("Enter subject code to update: ").upper()
+        if code not in self.subjects:
+            print("Subject not found!")
+        else:
+            print("Leave blank if you don't want to update that field.")
+            subject = self.subjects[code]
+
+            name = input(f"Enter new subject name ({subject['name']}): ") or subject['name']
+            schedule = input(f"Enter new time schedule ({subject['schedule']}): ") or subject['schedule']
+            units = input(f"Enter new units ({subject['units']}): ")
+            year = input(f"Enter new year level ({subject['year']}): ") or subject['year']
+            gender = input(f"Enter new gender ({subject['gender']}): ") or subject['gender']
+
+            units = int(units) if units else subject['units']
+
+            self.subjects[code] = {
+                "name": name,
+                "schedule": schedule,
+                "units": units,
+                "year": year,
+                "gender": gender
+            }
+            print("Subject updated successfully!")
+
+    def delete_subject(self):
+        code = input("Enter subject code to delete: ").upper()
+        if code in self.subjects:
+            del self.subjects[code]
+            print("Subject deleted successfully!")
+        else:
+            print("Subject not found!")
+
+
+# ========================= STUDENT MANAGER ==========================
+
+class StudentManager:
+    def __init__(self):
+        self.students = {}
+
+    def create_student(self):
+        sid = input("Enter student ID: ").upper()
+        if sid in self.students:
+            print("Student already exists!")
+        else:
+            name = input("Enter student name: ")
+            age = int(input("Enter age: "))
+            gender = input("Enter gender (Male/Female): ").title()
+            year = input("Enter year level (First/Second/Third/Higher): ").title()
+
+            self.students[sid] = {
+                "name": name,
+                "age": age,
+                "gender": gender,
+                "year": year
+            }
+            print("Student added successfully!")
+
+    def read_students(self):
+        if not self.students:
+            print("No students available.")
+        else:
+            print("\n--- STUDENT LIST ---")
+            for sid, info in self.students.items():
+                print(f"ID: {sid}")
+                print(f" Name: {info['name']}")
+                print(f" Age: {info['age']}")
+                print(f" Gender: {info['gender']}")
+                print(f" Year Level: {info['year']}\n")
+
+    def update_student(self):
+        sid = input("Enter student ID to update: ").upper()
+        if sid not in self.students:
+            print("Student not found!")
+        else:
+            print("Leave blank if you don't want to update that field.")
+            student = self.students[sid]
+
+            name = input(f"Enter new name ({student['name']}): ") or student['name']
+            age = input(f"Enter new age ({student['age']}): ")
+            gender = input(f"Enter new gender ({student['gender']}): ") or student['gender']
+            year = input(f"Enter new year level ({student['year']}): ") or student['year']
+
+            age = int(age) if age else student['age']
+
+            self.students[sid] = {
+                "name": name,
+                "age": age,
+                "gender": gender,
+                "year": year
+            }
+            print("Student updated successfully!")
+
+    def delete_student(self):
+        sid = input("Enter student ID to delete: ").upper()
+        if sid in self.students:
+            del self.students[sid]
+            print("Student deleted successfully!")
+        else:
+            print("Student not found!")
+
+
+# ========================= MAIN MENU ==========================
+
+def main():
+    subject_manager = SubjectManager()
+    student_manager = StudentManager()
+
+    while True:
+        print("\n===== MAIN MENU =====")
+        print("[1] Add Subject")
+        print("[2] View Subjects")
+        print("[3] Update Subject")
+        print("[4] Delete Subject")
+        print("[5] Add Student")
+        print("[6] View Students")
+        print("[7] Update Student")
+        print("[8] Delete Student")
+        print("[9] Exit")
+
+        choice = input("Enter choice (1-9): ")
+
+        if choice == "1":
+            subject_manager.create_subject()
+        elif choice == "2":
+            subject_manager.read_subjects()
+        elif choice == "3":
+            subject_manager.update_subject()
+        elif choice == "4":
+            subject_manager.delete_subject()
+        elif choice == "5":
+            student_manager.create_student()
+        elif choice == "6":
+            student_manager.read_students()
+        elif choice == "7":
+            student_manager.update_student()
+        elif choice == "8":
+            student_manager.delete_student()
+        elif choice == "9":
+            print("Thank you! Exiting program...")
+            break
+        else:
+            print("Invalid choice! Please try again.")
+
+
+if __name__ == "__main__":
+    main()
