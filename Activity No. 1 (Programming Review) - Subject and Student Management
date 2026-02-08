@@ -1,0 +1,261 @@
+# BENITEZ NESTOR S.
+# BSIT 2CX 2ND YEAR
+
+
+subjects = {} 
+students = {}
+
+
+def create_subject():
+    code = input("Enter subject code: ").upper()
+    if code in subjects:
+        print("Subject already exists!")
+    else:
+        name = input("Enter subject name: ")
+        schedule = input("Enter time schedule (e.g. MWF 8:00-9:00): ")
+        units = int(input("Enter number of units: "))
+        year = input("Enter year level (First/Second/Third/Higher): ").title()
+        gender = input("Enter gender allowed (Male/Female/All): ").title()
+
+        subjects[code] = {
+            "name": name,
+            "schedule": schedule,
+            "units": units,
+            "year": year,
+            "gender": gender
+        }
+        print("Subject added successfully!")
+
+
+def read_subjects():
+    if not subjects:
+        print("No subjects available.")
+    else:
+        print("\n--- SUBJECT LIST ---")
+        for code, info in subjects.items():
+            print(f"Code: {code}")
+            print(f" Name: {info['name']}")
+            print(f" Schedule: {info['schedule']}")
+            print(f" Units: {info['units']}")
+            print(f" Year Level: {info['year']}")
+            print(f" Gender: {info['gender']}\n")
+
+
+def update_subject():
+    code = input("Enter subject code to update: ").upper()
+    if code not in subjects:
+        print("Subject not found!")
+    else:
+        print("Leave blank if you don't want to update that field.")
+        name = input(f"Enter new subject name ({subjects[code]['name']}): ") or subjects[code]['name']
+        schedule = input(f"Enter new time schedule ({subjects[code]['schedule']}): ") or subjects[code]['schedule']
+        units = input(f"Enter new units ({subjects[code]['units']}): ")
+        year = input(f"Enter new year level ({subjects[code]['year']}): ") or subjects[code]['year']
+        gender = input(f"Enter new gender ({subjects[code]['gender']}): ") or subjects[code]['gender']
+
+        if units:
+            units = int(units)
+        else:
+            units = subjects[code]['units']
+
+        subjects[code] = {
+            "name": name,
+            "schedule": schedule,
+            "units": units,
+            "year": year,
+            "gender": gender
+        }
+        print("Subject updated successfully!")
+
+
+def delete_subject():
+    code = input("Enter subject code to delete: ").upper()
+    if code in subjects:
+        del subjects[code]
+        print("Subject deleted successfully!")
+    else:
+        print("Subject not found!")
+
+
+
+
+def create_student():
+    sid = input("Enter student ID: ").upper()
+    if sid in students:
+        print("Student already exists!")
+    else:
+        name = input("Enter student name: ")
+        age = int(input("Enter age: "))
+        gender = input("Enter gender (Male/Female): ").title()
+        year = input("Enter year level (First/Second/Third/Higher): ").title()
+
+        students[sid] = {
+            "name": name,
+            "age": age,
+            "gender": gender,
+            "year": year
+        }
+        print("Student added successfully!")
+
+
+def read_students():
+    if not students:
+        print("No students available.")
+    else:
+        print("\n--- STUDENT LIST ---")
+        for sid, info in students.items():
+            print(f"ID: {sid}")
+            print(f" Name: {info['name']}")
+            print(f" Age: {info['age']}")
+            print(f" Gender: {info['gender']}")
+            print(f" Year Level: {info['year']}\n")
+
+
+def update_student():
+    sid = input("Enter student ID to update: ").upper()
+    if sid not in students:
+        print("Student not found!")
+    else:
+        print("Leave blank if you don't want to update that field.")
+        name = input(f"Enter new name ({students[sid]['name']}): ") or students[sid]['name']
+        age = input(f"Enter new age ({students[sid]['age']}): ")
+        gender = input(f"Enter new gender ({students[sid]['gender']}): ") or students[sid]['gender']
+        year = input(f"Enter new year level ({students[sid]['year']}): ") or students[sid]['year']
+
+        if age:
+            age = int(age)
+        else:
+            age = students[sid]['age']
+
+        students[sid] = {
+            "name": name,
+            "age": age,
+            "gender": gender,
+            "year": year
+        }
+        print("Student updated successfully!")
+
+
+def delete_student():
+    sid = input("Enter student ID to delete: ").upper()
+    if sid in students:
+        del students[sid]
+        print("Student deleted successfully!")
+    else:
+        print("Student not found!")
+
+
+
+
+while True:
+    print("\n===== MAIN MENU =====")
+    print("[1] Add Subject")
+    print("[2] View Subjects")
+    print("[3] Update Subject")
+    print("[4] Delete Subject")
+    print("[5] Add Student")
+    print("[6] View Students")
+    print("[7] Update Student")
+    print("[8] Delete Student")
+    print("[9] Exit")
+
+    choice = input("Enter choice (1-9): ")
+
+    if choice == "1":
+        create_subject()
+    elif choice == "2":
+        read_subjects()
+    elif choice == "3":
+        update_subject()
+    elif choice == "4":
+        delete_subject()
+    elif choice == "5":
+        create_student()
+    elif choice == "6":
+        read_students()
+    elif choice == "7":
+        update_student()
+    elif choice == "8":
+        delete_student()
+    elif choice == "9":
+        print("Thank you! Exiting program...")
+        break
+    else:
+        print("Invalid choice! Please try again.")
+
+
+        
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
