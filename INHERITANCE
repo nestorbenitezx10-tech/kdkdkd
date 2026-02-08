@@ -1,0 +1,85 @@
+import math
+
+class Shape:
+    def __init__(self, color):
+        self.__color = color
+        
+    def get_color(self):
+        return self.__color
+    def __str__(self):
+        return f"Color: {self.__color}"
+
+#THIS IS MY 2D
+class Object2D(Shape):
+    def __init__(self, color, length, width):
+        self.__length = length
+        self.__width = width
+        super().__init__(color)
+
+    def get_length(self):
+        return self.__length
+    def get_width(self):
+        return self.__width
+    
+    def get_perimeter(self):
+        return 2*(self.__length + self.__width)
+    def get_area(self):
+        return (self.__width * self.__length)
+    
+    def __str__(self):
+        return super().__str__()
+    
+#THIS IS MY 3D
+class Object3D(Object2D):
+    def __init__(self, color, length, width, height):
+        super().__init__(color, length, width)
+        self.__height = height
+        
+
+    def get_height(self):
+        return self.__height
+
+    def get_volume(self):
+        return super().get_area() * self.__height
+
+    def __str__(self):
+        return f"Color of Prism: {self.get_color()}"
+    
+
+obj2D = Object2D("blue", 30, 60)
+
+obj3D = Object3D("red", 5, 25, 10)
+
+print(f"Rectangle {obj2D}")
+print(f"Area of Rectangle: {obj2D.get_area()}")
+print(f"Perimeter of Rectangle: {obj2D.get_perimeter()}")
+print()
+
+print(obj3D)
+print(f"Height of Prism: {obj3D.get_height()}")
+print(f"Volume of Prism: {obj3D.get_volume()}")
+
+
+
+#2024302407
+#BENITEZ NESTOR S.
+#BSIT 2CX
+
+
+
+
+BENITEZ_NS ACTIVITY 6.py
+Displaying BENITEZ_NS ACTIVITY 6.py.
+Activity No. 6 - Inheritance
+Charles Hanz Bautista
+•
+Nov 6, 2025
+40 points
+Due Nov 6, 2025, 10:05 AM
+Indicate the 2D and 3D classes that you are assigned with. Place it as a comment.
+
+Add the following comments at the bottom of the source code:
+ID number and Name
+Section Code
+Schedule
+Class comments
