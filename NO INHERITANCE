@@ -1,0 +1,160 @@
+class Person:
+    def __init__(self, name, dob, gender, status, houseNo, purok, brgy, cityMun, province, country):
+    # def __init__(self, name, dob, gender, status, address):
+        self.__name = name #Name object
+        self.__dob = dob #Date object 10/19/2020
+        self.__gender = gender
+        self.__status = status
+        # self.__address = address
+        self.__address = Address(houseNo, purok, brgy, cityMun, province, country)
+
+    def __str__(self):
+        return "\nName: " + self.__name + "\nDate of Birth: " + self.__dob + \
+            "\nGender: " + self.__gender + "\nStatus: " + self.__status + \
+                "\nAddress: " + str(self.__address)
+
+    # incomplete class defn for Person
+
+
+class Employee(object):
+    def __init__(self, name, dob, gender, status, houseNo, purok, brgy, cityMun, province, country, occ, pos, sal):
+        self.__name = name
+        self.__dob = dob
+        self.__gender = gender
+        self.__status = status
+        self.__address = Address(houseNo, purok, brgy, cityMun, province, country)
+        self.__occupation = occ
+        self.__position = pos
+        self.__salary = sal
+
+    # incomplete employee class def'n
+        
+    def __str__(self):
+        return "\nName: " + self.__name + "\nDate of Birth: " + self.__dob + \
+            "\nGender: " + self.__gender + "\nStatus: " + self.__status + \
+                "\nAddress: " + str(self.__address) + "\nOccupation: " + self.__occupation + \
+                    "\nPosition: " + self.__position + "\nSalary: " + str(self.__salary)
+
+class Student:
+    # same data fields with Person, add specific for student
+    def __init__(self, name, dob, gender, status, houseNo, purok, brgy, cityMun, province, country, studID, course, year):
+        self.__name = name
+        self.__dob = dob
+        self.__gender = gender
+        self.__status = status
+        self.__address = Address(houseNo, purok, brgy, cityMun, province, country)
+        self.__studID = studID
+        self.__course = course
+        self.__year = year
+    
+    def __str__(self):
+        return "\nName: " + self.__name + "\nDate of Birth: " + self.__dob + \
+            "\nGender: " + self.__gender + "\nStatus: " + self.__status + \
+                "\nAddress: " + str(self.__address) + "\nStudent ID: " + str(self.__studID) + \
+                "\nCourse: " + str(self.__course) + "\nYear Level: " + str(self.__year)
+
+class DOB:
+    def __init__(self, m, d, y):
+        self.__month = m
+        self.__day = d
+        self.__year = y
+
+class Name:
+    pass
+    # last, first, middle, suffix
+
+class Address:
+    def __init__(self, houseNo, purok, brgy, cityMun, province, country):
+        self.__houseNo = houseNo
+        self.__purok = purok
+        self.__brgy = brgy
+        self.__cityMun = cityMun
+        self.__province = province
+        self.__country = country
+    
+    # incomplete address class def'n
+    def __str__(self):
+        return "Purok " + str(self.__purok) + ", " + str(self.__houseNo) + \
+            ", " + self.__brgy + ", " + self.__cityMun + \
+                ", " + self.__province + ", " + self.__country
+
+class Staff:
+    # data fields of Person/Employee
+    # specific to staff
+    pass
+
+class Faculty:
+    # data fields of Person/Employee
+    # specific to faculty
+    pass
+
+class MasterStudent:
+    # data fields of Person/Student
+    # specific to masters
+    pass
+
+class CollegeStudent:
+    # data fields of Person/Student
+    # specific to college
+    pass
+
+class SeniorHighSchool:
+    # data fields of Person/Student
+    pass
+
+class JuniorHighSchool:
+    # data fields of Person/Student
+    pass
+
+
+# address1 = Address("Duplex 14A", "15", "Dologon", "Maramag", "Bukidnon", "Philippines")
+# print(address1)
+
+person1 = Person("Charles Hanz Bautista", "December 23, 2000", "Male", "Married", "Duplex 14A", "15", "Dologon", "Maramag", "Bukidnon", "Philippines")
+# person1 = Person("Charles Hanz Bautista", "December 23, 2000", "Male", "Married", address1)
+print(person1)
+
+# employee1 = Employee("Charles Hanz Bautista", "December 23, 2000", "M", "Married", "Duplex 14A", "15", "Dologon", "Maramag", "Bukidnon", "Philippines", "Govt Emp", "Instructor", 25000)
+# print(employee1)
+
+# student1 = Student("John Ayuban", "June 19, 2003", "male", "single", "0566", "3", "Poblacion", "Valencia", "Bukidnon", "Philippines", "2022XXXXXX", "BSIT", 2)
+# print(student1)
+
+# person1 = Person("Danilo Antonio Jr.", "July 18, 2001", "M", "Single", "3", "1", "Lumbo", "Valencia City", "Bukidnon", "Philippines")
+# print(person1)
+
+# employee1 = Employee("Danilo Antonio Jr.", "July 18, 2001", "M", "Single", "3", "1", "Lumbo", "Valencia City", "Bukidnon", "Philippines", "Gov't Employee", "IT Specialist", 57000)
+# print(employee1)
+6_NoInheritance.py
+Displaying 6_NoInheritance.py.
+Lecture Programming Demo Codes
+Charles Hanz Bautista
+•
+Nov 26, 2025
+AbstractClassExample.py
+Text
+
+DefaultConstructor.py
+Text
+
+TypesOfMethods.py
+Text
+
+MultipleInheritance.py
+Text
+
+MyPoint.py
+Text
+
+Line.py
+Text
+
+6_NoInheritance.py
+Text
+
+7_WithInheritance.py
+Text
+
+Class comments
+
+Add class comment…
