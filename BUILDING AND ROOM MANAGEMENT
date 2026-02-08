@@ -1,0 +1,184 @@
+def menu_building():
+    print("=" * 30)
+    print("Building Menu")
+    print("=" * 30)
+    print("[1] Add Building")
+    print("[2] Update Building")
+    print("[3] Remove Building")
+    print("[4] Display Buildings & Manage Rooms")
+    print("[0] Back\n")
+
+def room_menu():
+    print("=" * 30)
+    print("Room Menu")
+    print("=" * 30)
+    print("[1] Add Room")
+    print("[2] Update Room")
+    print("[3] Remove Room")
+    print("[4] Display Rooms")
+    print("[5] Back\n")
+
+def display_buildings(buildings):
+    if not buildings:
+        print("No buildings available.\n")
+        return
+    print("Buildings:")
+    for idx, name in enumerate(buildings, 1):
+        print(f"{idx}. {name}")
+    print()
+
+def display_rooms(rooms, building_index, buildings):
+    building_name = buildings[building_index]
+    if building_name not in rooms or not rooms[building_name]:
+        print(f"No rooms available in {building_name}.\n")
+        return
+    print(f"Rooms in {building_name}:")
+    for idx, room in enumerate(rooms[building_name], 1):
+        print(f"{idx}. {room}")
+    print()
+
+def manage_buildings():
+    buildings = [
+        "College of Veterinary Medicine",
+        "College of Buiseness Management",
+        "College of Engineering",
+        "College of Information Technology"
+    ]
+
+    rooms = {
+        "College of Veterinary Medicine": ["Room 1", "Room 2", "Room 3", "Lab 1", "Lab 2"],
+        "College of Buiseness Management": ["Room 201", "Room 202", "Room 203", "Lab 1", "Lab 2"],
+        "College of Engineering": ["Room 301", "Room 302", "Room 303", "Lab 1", "Lab 2", "Lab 3"],
+        "College of Information Technology": ["Room 401", "Room 402", "Room 403", "Lab 21", "Lab 22", "trainig room"]
+    }
+
+    while True:
+        menu_building()
+        choice = input("Choose an option: ").strip()
+        if choice == "0":
+            break
+        elif choice == "1":  # Add Building
+            name = input("Enter building name: ").strip().title()
+            if name in buildings:
+                print("Building already exists.\n")
+                continue
+            buildings.append(name)
+            print("Building added.\n")
+        elif choice == "2":  # Update Building
+            display_buildings(buildings)
+            try:
+                idx = int(input("Enter building number to update: ").strip()) - 1
+                if idx < 0 or idx >= len(buildings):
+                    print("Invalid building number.\n")
+                    continue
+            except ValueError:
+                print("Invalid input.\n")
+                continue
+            name = input("Enter new building name: ").strip().title()
+            old_name = buildings[idx]
+            buildings[idx] = name
+            if old_name in rooms:
+                rooms[name] = rooms.pop(old_name)
+            print("Building updated.\n")
+        elif choice == "3":  # Remove Building
+            display_buildings(buildings)
+            try:
+                idx = int(input("Enter building number to remove: ").strip()) - 1
+                if idx < 0 or idx >= len(buildings):
+                    print("Invalid building number.\n")
+                    continue
+            except ValueError:
+                print("Invalid input.\n")
+                continue
+            confirm = input(f"Are you sure you want to remove {buildings[idx]}? (y/n): ").lower()
+            if confirm == "y":
+                removed = buildings.pop(idx)
+                rooms.pop(removed, None)
+                print(f"Removed {removed}.\n")
+            else:
+                print("Removal cancelled.\n")
+        elif choice == "4":  # Display Buildings and manage rooms
+            display_buildings(buildings)
+            try:
+                bld_idx = int(input("Enter building number: ").strip()) - 1
+                if bld_idx < 0 or bld_idx >= len(buildings):
+                    print("Invalid building number.\n")
+                    continue
+            except ValueError:
+                print("Invalid input.\n")
+                continue
+            
+            building_name = buildings[bld_idx]
+
+            while True:
+                room_menu()
+                r_choice = input("Choose an option: ").strip()
+                if r_choice == "0":
+                    break
+                elif r_choice == "1":  # Add Room
+                    room_name = input("Enter room name: ").strip().title()
+                    if building_name not in rooms:
+                        rooms[building_name] = []
+                    if room_name in rooms[building_name]:
+                        print("Room already exists.\n")
+                        continue
+                    rooms[building_name].append(room_name)
+                    print("Room added.\n")
+                elif r_choice == "2":  # Update Room
+                    display_rooms(rooms, bld_idx, buildings)
+                    try:
+                        ridx = int(input("Enter room number to update: ").strip()) - 1
+                        if ridx < 0 or ridx >= len(rooms[building_name]):
+                            print("Invalid room number.\n")
+                            continue
+                    except ValueError:
+                        print("Invalid input.\n")
+                        continue
+                    new_name = input("Enter new room name: ").strip().title()
+                    rooms[building_name][ridx] = new_name
+                    print("Room updated.\n")
+                elif r_choice == "3":  # Remove Room
+                    display_rooms(rooms, bld_idx, buildings)
+                    try:
+                        ridx = int(input("Enter room number to remove: ").strip()) - 1
+                        if ridx < 0 or ridx >= len(rooms[building_name]):
+                            print("Invalid room number.\n")
+                            continue
+                    except ValueError:
+                        print("Invalid input.\n")
+                        continue
+                    removed_room = rooms[building_name].pop(ridx)
+                    print(f"Removed {removed_room}.\n")
+                elif r_choice == "4":  # Display Rooms
+                    display_rooms(rooms, bld_idx, buildings)
+                else:
+                    print("Invalid choice!\n")
+
+while True:
+    print("\n===== MAIN MENU =====")
+    print("[1] BUILDING AND ROOM")
+    print("[2] Exit")
+
+    choice = input("Enter choice (1-2): ")
+
+    if choice == "1":
+        manage_buildings()
+    elif choice == "2":
+        print("Thank you! Exiting program...")
+        break
+    else:
+        print("Invalid choice! Please try again.")
+
+
+
+
+
+#ID Number:2024302407
+#Name:Nestor S Benitez.
+#Section Code: BSIT2CX
+#Schedule:7-10AM THURSDAY
+
+
+
+
+
