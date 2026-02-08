@@ -1,0 +1,170 @@
+def college_menu():
+    print("=" * 30)
+    print("College Menu")
+    print("=" * 30)
+    print("[1] Add College")
+    print("[2] Update College")
+    print("[3] Remove College")
+    print("[4] Display Colleges & Manage Departments")
+    print("[0] Back\n")
+
+def dept_menu():
+    print("=" * 30)
+    print("Department Menu")
+    print("=" * 30)
+    print("[1] Add Department")
+    print("[2] Update Department")
+    print("[3] Remove Department")
+    print("[4] Display Departments")
+    print("[0] Back\n")
+
+# ===================== DISPLAY HELPERS =====================
+def display_colleges(colleges):
+    if not colleges:
+        print("No colleges available.\n")
+        return
+    print("Colleges:")
+    for idx, name in enumerate(colleges, 1):
+        print(f"{idx}. {name}")
+    print()
+
+def display_departments(departments, college_index, colleges):
+    college_name = colleges[college_index]
+    if college_name not in departments or not departments[college_name]:
+        print(f"No departments available in {college_name}.\n")
+        return
+    print(f"Departments in {college_name}:")
+    for idx, dept in enumerate(departments[college_name], 1):
+        print(f"{idx}. {dept}")
+    print()
+
+# ===================== COLLEGE MANAGEMENT =====================
+def manage_colleges():
+    colleges = ["College of Veterinary Medicine", "College of Buiseness Management", "College of Engineering","College of Information Technology",]
+
+    departments = {
+        "College of Veterinary Medicine": ["Biology Dept", "Physics Dept", "Chemistry Dept"],
+        "College of Buiseness Management": ["Accounting Dept","finance Dept","Marketing Dept","Management Dept","Human Resources Dept","Business Law Dept"],
+        "College of Engineering": ["Basic Sciences Dept", "Paraclinical Sciences Dept"," Clinical Sciences Dept"],
+        "College of Information Technology":["Network and System Administration Dept","Cybersecurity Dept","Data Management Dept","Software Development Dept"],
+    }
+
+
+
+    while True:
+        college_menu()
+        choice = input("Choose an option: ").strip()
+        if choice == "0":
+            break
+        elif choice == "1":  # Add College
+            name = input("Enter college name: ").strip().title()
+            if name in colleges:
+                print("College already exists.\n")
+                continue
+            colleges.append(name)
+            print("College added.\n")
+        elif choice == "2":  # Update College
+            display_colleges(colleges)
+            try:
+                idx = int(input("Enter college number to update: ").strip()) - 1
+                if idx < 0 or idx >= len(colleges):
+                    print("Invalid college number.\n")
+                    continue
+            except ValueError:
+                print("Invalid input.\n")
+                continue
+            new_name = input("Enter new college name: ").strip().title()
+            old_name = colleges[idx]
+            colleges[idx] = new_name
+            if old_name in departments:
+                departments[new_name] = departments.pop(old_name)
+            print("College updated.\n")
+        elif choice == "3":  # Remove College
+            display_colleges(colleges)
+            try:
+                idx = int(input("Enter college number to remove: ").strip()) - 1
+                if idx < 0 or idx >= len(colleges):
+                    print("Invalid college number.\n")
+                    continue
+            except ValueError:
+                print("Invalid input.\n")
+                continue
+            confirm = input(f"Are you sure you want to remove {colleges[idx]}? (y/n): ").lower()
+            if confirm == "y":
+                removed = colleges.pop(idx)
+                departments.pop(removed, None)
+                print(f"Removed {removed}.\n")
+            else:
+                print("Removal cancelled.\n")
+        elif choice == "4":  # Display Colleges and manage departments
+            display_colleges(colleges)
+            try:
+                col_idx = int(input("Enter college number: ").strip()) - 1
+                if col_idx < 0 or col_idx >= len(colleges):
+                    print("Invalid college number.\n")
+                    continue
+            except ValueError:
+                print("Invalid input.\n")
+                continue
+            
+            college_name = colleges[col_idx]
+
+            while True:
+                dept_menu()
+                d_choice = input("Choose an option: ").strip()
+                if d_choice == "0":
+                    break
+                elif d_choice == "1":  # Add Department
+                    dept_name = input("Enter department name: ").strip().title()
+                    if college_name not in departments:
+                        departments[college_name] = []
+                    if dept_name in departments[college_name]:
+                        print("Department already exists.\n")
+                        continue
+                    departments[college_name].append(dept_name)
+                    print("Department added.\n")
+                elif d_choice == "2":  # Update Department
+                    display_departments(departments, col_idx, colleges)
+                    try:
+                        didx = int(input("Enter department number to update: ").strip()) - 1
+                        if didx < 0 or didx >= len(departments[college_name]):
+                            print("Invalid department number.\n")
+                            continue
+                    except ValueError:
+                        print("Invalid input.\n")
+                        continue
+                    new_name = input("Enter new department name: ").strip().title()
+                    departments[college_name][didx] = new_name
+                    print("Department updated.\n")
+                elif d_choice == "3":  # Remove Department
+                    display_departments(departments, col_idx, colleges)
+                    try:
+                        didx = int(input("Enter department number to remove: ").strip()) - 1
+                        if didx < 0 or didx >= len(departments[college_name]):
+                            print("Invalid department number.\n")
+                            continue
+                    except ValueError:
+                        print("Invalid input.\n")
+                        continue
+                    removed_dept = departments[college_name].pop(didx)
+                    print(f"Removed {removed_dept}.\n")
+                elif d_choice == "4":  # Display Departments
+                    display_departments(departments, col_idx, colleges)
+                else:
+                    print("Invalid choice!\n")
+
+# ===================== MAIN MENU =====================
+while True:
+    print("\n===== MAIN MENU =====")
+    print("[1] COLLEGE AND DEPARTMENT")
+    print("[2] Exit")
+
+    choice = input("Enter choice (1-2): ")
+
+    if choice == "1":
+        manage_colleges()
+    elif choice == "2":
+        print("Thank you! Exiting program...")
+        break
+    else:
+        print("Invalid choice! Please try again.")
