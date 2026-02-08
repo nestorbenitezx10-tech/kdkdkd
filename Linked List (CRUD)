@@ -1,0 +1,145 @@
+Skip to main content
+Google Classroom
+Classroom
+ITCC 47A
+BSIT 2Cx (Tue 7-10)
+Linked List (CRUD)
+class Song:
+    def __init__(self, title, author, duration):
+        self.title = title
+        self.author = author
+        self.duration = duration
+        self.next = None
+
+
+class Playlist:
+    def __init__(self):
+        self.head = None
+
+    # ============ CREATE (Add new song)==============
+    def add_song(self, title, author, duration):
+        new_song = Song(title, author, duration)
+        if not self.head:
+            self.head = new_song
+        else:
+            temp = self.head
+            while temp.next:
+                temp = temp.next
+            temp.next = new_song
+        print("\n Song added successfully!")
+
+    # ============= READ (Display songs) ===============
+    def display_songs(self):
+        if not self.head:
+            print("\n Playlist is empty!")
+            return
+
+        print("\n SONG PLAYLIST ")
+        print("=" * 60)
+        print(f"{'TITLE':<25} {'AUTHOR':<20} {'DURATION':<10}")
+        print("=" * 60)
+
+        temp = self.head
+        while temp:
+            print(f"{temp.title:<25} {temp.author:<20} {temp.duration:<10}")
+            temp = temp.next
+        print("=" * 60)
+
+    # =============== UPDATE (Modify song info) ==============
+    def update_song(self, search_title):
+        if not self.head:
+            print("\n Playlist is empty!")
+            return
+
+        temp = self.head
+        while temp:
+            if temp.title.lower() == search_title.lower():
+                temp.author = input("Enter new Author: ")
+                temp.duration = input("Enter new Duration: ")
+                print("\n Song updated successfully!")
+                return
+            temp = temp.next
+
+        print("\n Song not found!")
+
+    # =============== DELETE (Remove a song) ===============
+    def delete_song(self, search_title):
+        if not self.head:
+            print("\n Playlist is empty!")
+            return
+
+        temp = self.head
+
+      
+        if temp.title.lower() == search_title.lower():
+            self.head = temp.next
+            print("\n Song deleted successfully!")
+            return
+
+        prev = None
+        while temp and temp.title.lower() != search_title.lower():
+            prev = temp
+            temp = temp.next
+
+        if not temp:
+            print("\n Song not found!")
+            return
+
+        prev.next = temp.next
+        print("\n Song deleted successfully!")
+
+
+# ===============================
+# MAIN MENU
+# ===============================
+def main():
+    playlist = Playlist()
+
+    while True:
+        print("\n======  SONG PLAYLIST MENU  ======")
+        print("1. Add Song")
+        print("2. View Playlist")
+        print("3. Update Song")
+        print("4. Delete Song")
+        print("5. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            title = input("Enter Song Title: ")
+            author = input("Enter Author: ")
+            duration = input("Enter Duration: ")
+            playlist.add_song(title, author, duration)
+        elif choice == '2':
+            playlist.display_songs()
+        elif choice == '3':
+            search_title = input("Enter the title of the song to update: ")
+            playlist.update_song(search_title)
+        elif choice == '4':
+            search_title = input("Enter the title of the song to delete: ")
+            playlist.delete_song(search_title)
+        elif choice == '5':
+            print("\n Exiting Playlist Program. Goodbye!\n")
+            break
+        else:
+            print("\n️ Invalid choice! Please try again.")
+
+
+if __name__ == "__main__":
+    main()
+BENITEZ_NS_ACTIVITY_LINKLIST (CRUD).py
+Linked List (CRUD)
+Charles Hanz Bautista
+•
+Nov 11, 2025
+40 points
+Due Nov 14, 2025, 11:00 PM
+Class comments
+Your work
+Turned in
+BENITEZ_NS_ACTIVITY_LINKLIST (CRUD).py
+Text
+
+Work cannot be turned in after the due date
+Private comments
+Displaying BENITEZ_NS_ACTIVITY_LINKLIST (CRUD).py.
