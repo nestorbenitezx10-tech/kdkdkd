@@ -1,0 +1,123 @@
+faculty = {} 
+
+
+
+def create_faculty():
+    fid= int(input("Enter faculty id: "))
+    if fid in faculty:
+        print("faculty already exists!")
+    else:
+        name = input("Enter subject name: ")
+        schedule = input("Enter time schedule (e.g. MWF 8:00-9:00): ")
+        units = int(input("Enter number of units: "))
+        age = int(input("Enter age: "))
+        gender = input("Enter gender allowed (Male/Female/All): ").title()
+        degree=input("Enter degree:")
+                    
+                      
+                      
+
+        faculty[fid] = {
+            "name": name,
+            "schedule": schedule,
+            "units": units,
+            "age": age,
+            "gender": gender,
+            "degree":degree
+        }
+        print("Subject added successfully!")
+
+
+def read_faculty():
+    if not faculty:
+        print("No faculty available.")
+    else:
+        print("\n--- faculty LIST ---")
+        for fid, info in faculty.items():
+            print(f"fid: {fid}")
+            print(f" Name: {info['name']}")
+            print(f" Schedule: {info['schedule']}")
+            print(f" Units: {info['units']}")
+            print(f" Age: {info['age']}")
+            print(f" Gender: {info['gender']}")
+            print(f" Degree: {info['degree']}/n")
+
+def update_faculty():
+    fid = input("Enter faculty fid to update: ")
+    if fid not in faculty:
+        print("faculty not found!")
+    else:
+        print("Leave blank if you don't want to update that field.")
+        name = input(f"Enter new faculty name ({faculty[fid]['name']}): ") or faculty[fid]['name']
+        schedule = input(f"Enter new time schedule ({facculty[fid]['schedule']}): ") or faculty[fid]['schedule']
+        units = input(f"Enter new units ({faculty[fid]['units']}): ")
+        age = input(f"Enter new age({faculty[fid]['age']}): ") or faculty[fid]['age']
+        gender = input(f"Enter new gender ({faculty[fid]['gender']}): ") or subjects[code]['gender']
+        degree = input(f"Enter new degree({faculty[fid]['degree']}): ") or faculty[fud]['degree']
+        if units:
+            units = int(units)
+        else:
+            units = faculty[fid]['units']
+
+        faculty[fid] = {
+            "Name": name,
+            "Schedule": schedule,
+            "Units": units,
+            "Age": age,
+            "Gender": gender,
+            "Degree": degree
+        }
+        print("Subject updated successfully!")
+
+
+def delete_faculty():
+    fid = input("Enter faculty fid to delete: ").upper()
+    if fid in faculty:
+        del faculty[fid]
+        print("faculty deleted successfully!")
+    else:
+        print("faculty not found!")
+
+
+
+
+while True:
+    print("\n===== MAIN MENU =====")
+    print("[1] Add faculty")
+    print("[2] View faculty")
+    print("[3] Update faculty")
+    print("[4] Delete faculty")
+    print("[5] Exit")
+
+    choice = input("Enter choice (1-5): ")
+
+    if choice == "1":
+        create_faculty()
+    elif choice == "2":
+        read_faculty()
+    elif choice == "3":
+        update_faculty()
+    elif choice == "4":
+        delete_faculty()
+    elif choice == "5":
+      
+        print("Thank you! Exiting program...")
+        break
+    else:
+        print("Invalid choice! Please try again.")
+
+
+
+
+
+#2024302407
+#NESTOR S. BENITEZ
+#BSIT 2CX
+#THURSDAY 7-10:00 AM
+
+
+
+
+
+
+
