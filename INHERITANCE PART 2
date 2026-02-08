@@ -1,0 +1,199 @@
+class Vehicle:
+    def __init__(self, name, vehicle_type):
+        self.__name = name
+        self.__vehicle_type = vehicle_type
+
+    def get_name(self):
+        return self.__name
+
+    def get_vehicle_type(self):
+        return self.__vehicle_type
+
+    def display_info(self):
+        print(f"Vehicle Name: {self.__name}")
+        print(f"Vehicle Type: {self.__vehicle_type}")
+
+
+
+class LandVehicle(Vehicle):
+    def __init__(self, name, wheels):
+        super().__init__(name, "Land")
+        self.__wheels = wheels
+
+    def get_wheels(self):
+        return self.__wheels
+
+    def display_info(self):
+        super().display_info()
+        print(f"Number of Wheels: {self.__wheels}")
+
+
+
+class Car(LandVehicle):
+    def __init__(self, name, wheels, brand):
+        super().__init__(name, wheels)
+        self.__brand = brand
+
+    def get_brand(self):
+        return self.__brand
+
+    def display_info(self):
+        super().display_info()
+        print(f"Brand: {self.__brand}")
+
+
+class SportsCar(Car):
+    def __init__(self, name, wheels, brand, top_speed):
+        super().__init__(name, wheels, brand)
+        self.__top_speed = top_speed
+
+    def get_top_speed(self):
+        return self.__top_speed
+
+    def display_info(self):
+        super().display_info()
+        print(f"Top Speed: {self.__top_speed} km/h")
+
+
+
+class Bike(LandVehicle):
+    def __init__(self, name, wheels, brand):
+        super().__init__(name, wheels)
+        self.__brand = brand
+
+    def get_brand(self):
+        return self.__brand
+
+    def display_info(self):
+        super().display_info()
+        print(f"Brand: {self.__brand}")
+
+
+class AirVehicle(Vehicle):
+    def __init__(self, name, wings):
+        super().__init__(name, "Air")
+        self.__wings = wings
+
+    def get_wings(self):
+        return self.__wings
+
+    def display_info(self):
+        super().display_info()
+        print(f"Number of Wings: {self.__wings}")
+
+
+class Airplane(AirVehicle):
+    def __init__(self, name, wings, airline):
+        super().__init__(name, wings)
+        self.__airline = airline
+
+    def get_airline(self):
+        return self.__airline
+
+    def display_info(self):
+        super().display_info()
+        print(f"Airline: {self.__airline}")
+        
+class Helecopter (AirVehicle):
+    def __init__(self, name, blade, airline):
+        super().__init__(name, blade)
+        self.__airline = airline
+
+    def get_airline(self):
+        return self.__airline
+
+    def display_info(self):
+        super().display_info()
+        print(f"Airline: {self.__airline}")
+
+        
+
+
+
+class WaterVehicle(Vehicle):
+    def __init__(self, name, capacity):
+        super().__init__(name, "Water")
+        self.__capacity = capacity
+
+    def get_capacity(self):
+        return self.__capacity
+
+    def display_info(self):
+        super().display_info()
+        print(f"Passenger Capacity: {self.__capacity}")
+
+
+class Boat(WaterVehicle):
+    def __init__(self, name, capacity, engine_type):
+        super().__init__(name, capacity)
+        self.__engine_type = engine_type
+
+    def get_engine_type(self):
+        return self.__engine_type
+
+    def display_info(self):
+        super().display_info()
+        print(f"Engine Type: {self.__engine_type}")
+
+
+
+class Submarine(WaterVehicle):
+    def __init__(self, name, capacity, engine_type):
+        super().__init__(name, capacity)
+        self.__engine_type = engine_type
+
+    def get_engine_type(self):
+        return self.__engine_type
+
+    def display_info(self):
+        super().display_info()
+        print(f"Engine Type: {self.__engine_type}")
+
+
+
+if __name__ == "__main__":
+    print("=== LAND VEHICLE LEVELS ===")
+    car = Car("RAPTOR", 4, "FORD")
+    car.display_info()
+
+    print("\n ===SPORTS CAR ===")
+    sportscar = SportsCar("Supra", 4, "Toyota", 320)
+    sportscar.display_info()
+
+    print("\n--- BIKE ---")
+    bike = Bike("Raider", 2, "Suzuki")
+    bike.display_info()
+
+    print("\n=== AIR VEHICLE USING WINGS===")
+    plane = Airplane("CEBU PACIFIC", 2, "Philippine Airlines")
+    plane.display_info()
+
+    print("\n=== AIR VEHICLE USING BLADE===")
+    plane = Helecopter("alpha combat", 1, "Philippine combats")
+    plane.display_info()
+
+
+    print("\n=== WATER VEHICLE SURFACE")
+    boat = Boat("Ferry", 200, "Diesel")
+    boat.display_info()
+
+    print("\n=== WATER VEHICLE UNDER WATER===")
+    boat = Boat("NINJA", 200, "Diesel")
+    boat.display_info()
+
+#2024302407
+#BSIT 2CX
+#THU 7-10
+BENITEZ_NS_ACTIVITY 7.py
+Displaying BENITEZ_NS_ACTIVITY 7.py.
+Activity No. 7 - Inheritance (Part 2)
+Charles Hanz Bautista
+•
+Nov 13, 2025
+40 points
+Due Nov 14, 2025, 11:00 PM
+Add the following comments at the bottom of the source code:
+ID number and Name
+Section Code
+Schedule
+Class comments
